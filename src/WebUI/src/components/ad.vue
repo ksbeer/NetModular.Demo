@@ -3,15 +3,11 @@
     <el-badge :value="5">
       <nm-button type="text" class="nm-toolbar-button bell" icon="bell" @click="visible = !visible" />
     </el-badge>
-    <nm-dialog v-bind="dialog" :visible.sync="visible">
-      <div class="nm-p-10">
-        <p class="nm-p-10 nm-size-20 nm-text-center">开源不易，如果有云服务器需要，可以通过下方链接购买，让我给老婆孩子赚点零花钱~</p>
-        <a href="https://www.aliyun.com/minisite/goods?userCode=l1guudnn" target="_blank">
-          <img src="../imgs/aliyun.png" style="width:100%" />
-        </a>
-        <a href="https://url.cn/5Uq6Wjf" target="_blank">
-          <img src="../imgs/tencent.jpg" style="width:100%" />
-        </a>
+    <nm-dialog v-bind="dialog" class="nm-ad" :visible.sync="visible">
+      <div class="nm-ad-wrapper">
+        <nm-icon class="nm-size-100" name="work" />
+        <h1 class="nm-size-30">广告位招租~</h1>
+        <h1 class="nm-size-30">QQ：860996606</h1>
       </div>
     </nm-dialog>
   </div>
@@ -22,12 +18,18 @@ export default {
     return {
       visible: false,
       dialog: {
-        title: '2020采购季，海量云产品低至0.6折',
+        title: '找工作！',
         icon: 'gift',
         width: '900px',
-        height: '90%'
+        height: '90%',
+        fullscreen: true
       }
     }
+  },
+  created() {
+    setTimeout(() => {
+      this.visible = true
+    }, 1000)
   }
 }
 </script>
@@ -44,6 +46,19 @@ export default {
 .nm-toolbar-button.bell {
   .nm-icon {
     animation: ringing 2s infinite ease 1s;
+  }
+}
+.nm-ad {
+  .nm-dialog-main {
+    padding-bottom: 20px;
+  }
+}
+.nm-ad-wrapper {
+  padding: 20px;
+  text-align: center;
+  h2 {
+    margin: 15px 0;
+    font-size: 20px;
   }
 }
 @-moz-keyframes ringing {
